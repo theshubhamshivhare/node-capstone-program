@@ -26,6 +26,7 @@ app.use(cookieParser());
 
 /* Routes */
 require('./routes/searchRoutes')(app, router);
+require('./routes/restaurantRoutes')(app, router);
 
 
 module.exports = app;
