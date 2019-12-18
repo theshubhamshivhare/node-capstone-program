@@ -1,0 +1,269 @@
+{
+    "http": {
+        "port": 8080
+    },
+    "admin": {
+        "port": 9876,
+        "hostname": "localhost"
+    },
+    "apiEndpoints": {
+        "api": {
+            "host": "localhost",
+            "paths": "/ip"
+        },
+        "addRestaurant": {
+            "host": "localhost",
+            "paths": "/api/add-restaurant"
+        },
+        "searchRestaurant": {
+            "host": "localhost",
+            "paths": "/api/search"
+        },
+        "placeOrder": {
+            "host": "localhost",
+            "paths": "/api/placeorder"
+        },
+        "updateOrder": {
+            "host": "localhost",
+            "paths": "/api/order/:orderID"
+        },
+        "cancelOrder": {
+            "host": "localhost",
+            "paths": "/api/cancelorder/:orderID"
+        },
+        "fetchOrders": {
+            "host": "localhost",
+            "paths": "/api/fetchorders"
+        },
+        "getOrdersByCity": {
+            "host": "localhost",
+            "paths": "/api/getordersbycity"
+        },
+        "calculateAmount": {
+            "host": "localhost",
+            "paths": "/api/calculateamount"
+        },
+        "fetchOrdersByCityAndDate": {
+            "host": "localhost",
+            "paths": "/api/fetchordersbycityanddate"
+        },
+        "calculateAmountByCityAndDate": {
+            "host": "localhost",
+            "paths": "/api/calculatetotalamountbycitydate"
+        }
+    },
+    "serviceEndpoints": {
+        "httpbin": {
+            "url": "https://httpbin.org"
+        },
+        "searchsrv": {
+            "url": "http://localhost:3000/"
+        },
+        "ordersrv": {
+            "url": "http://localhost:3000/"
+        },
+        "aggregatesrv": {
+            "url": "http://localhost:4000/"
+        }
+    },
+    "policies": [
+        "basic-auth",
+        "key-auth",
+        "cors",
+        "expression",
+        "log",
+        "oauth2",
+        "proxy",
+        "rate-limit"
+    ],
+    "pipelines": [
+        {
+            "name": "default",
+            "apiEndpoints": [
+                "api"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "httpbin",
+                                "changeOrigin": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "default-1",
+            "apiEndpoints": [
+                "addRestaurant"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "searchsrv"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "default-2",
+            "apiEndpoints": [
+                "searchRestaurant"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "searchsrv"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "default-3",
+            "apiEndpoints": [
+                "placeOrder"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "ordersrv"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "default-4",
+            "apiEndpoints": [
+                "updateOrder"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "ordersrv"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "default-5",
+            "apiEndpoints": [
+                "cancelOrder"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "ordersrv"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "default-5",
+            "apiEndpoints": [
+                "fetchOrders"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "ordersrv"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "default-5",
+            "apiEndpoints": [
+                "getOrdersByCity"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "ordersrv"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "default-5",
+            "apiEndpoints": [
+                "calculateAmount"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "ordersrv"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "default-5",
+            "apiEndpoints": [
+                "fetchOrdersByCityAndDate"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "aggregatesrv"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "default-5",
+            "apiEndpoints": [
+                "calculateAmountByCityAndDate"
+            ],
+            "policies": [
+                {
+                    "proxy": [
+                        {
+                            "action": {
+                                "serviceEndpoint": "aggregatesrv"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

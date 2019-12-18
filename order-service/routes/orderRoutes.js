@@ -1,15 +1,21 @@
-const orderCtrl = require('../controllers/order')
+const createOrderCtrl = require('../controllers/createOrder')
+const updateOrderCtrl = require('../controllers/updateOrder')
+const cancelOrderCtrl = require('../controllers/cancelOrder')
+const fetchOrdersCtrl = require('../controllers/fetchOrders')
+const getOrdersByCityCtrl = require('../controllers/getOrdersByCity')
+const calculateOrdersAmountCtrl = require('../controllers/calculateOrdersAmount')
 
 module.exports = (app, router) => {
-    router.post('/placeorder', orderCtrl.placeOrder);
+    router.post('/placeorder', createOrderCtrl.validate('createOrder'), createOrderCtrl.placeOrder);
 
-    router.put('/order/:orderID', orderCtrl.updateOrder);
+    router.put('/order/:orderID', updateOrderCtrl.validate('updateOrder'), updateOrderCtrl.updateOrder);
 
-    router.put('/cancelorder/:orderID', orderCtrl.cancelOrder);
-    router.get('/orders', orderCtrl.getOrders);
+    router.put('/cancelorder/:orderID', cancelOrderCtrl.validate('cancelOrder'), cancelOrderCtrl.cancelOrder);
 
-    router.get('/getorderbycity', orderCtrl.getOrderByCity);
+    router.get('/fetchorders', fetchOrdersCtrl.getOrders);
 
-    router.get('/calculateamount', orderCtrl.calculateAmount)
+    router.get('/getordersbycity', getOrdersByCityCtrl.validate('getOrdersByCity'), getOrdersByCityCtrl.getOrderByCity);
+
+    router.get('/calculateamount', calculateOrdersAmountCtrl.calculateAmount)
     app.use('/api', router);
 }

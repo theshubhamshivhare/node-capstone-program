@@ -7,9 +7,13 @@ const Schema = mongoose.Schema;
 const orderSchema = new Schema({
     restaurantID: String,
     restautrantName: String,
-    orderAmount: String,
+    orderTotalAmount: String,
     city: String,
-    food: { type: [Schema.Types.Mixed] },
+    food: [{
+        dishName: String,
+        quantity: Number,
+        price: Number
+    }],
     orderStatus: { type: String, default: 'Ordered' },
     createdOn: {
         type: Date,

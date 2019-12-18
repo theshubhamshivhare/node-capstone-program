@@ -6,5 +6,5 @@ var app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-require('./routes/routes')(app, router)
+require('./routes/aggregateRoutes')(app, router)
 module.exports = app;

@@ -1,16 +1,17 @@
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var app = express();
+const express = require('express');
+const cookieParser = require('cookie-parser');
 const index = require('./config/index');
 const logger = require('./middlewares/logger');
+const router = express.Router();
+const mongoose = require('mongoose')
+const app = express();
+let response = {};
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-const router = express.Router();
-const mongoose = require('mongoose')
 
-let response = {};
 mongoose.connect(index.config.dev.url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     response = index.globalCode.success;
@@ -23,9 +24,6 @@ mongoose.connect(index.config.dev.url, { useNewUrlParser: true, useUnifiedTopolo
     process.exit();
   });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 require('./routes/orderRoutes')(app, router);
 

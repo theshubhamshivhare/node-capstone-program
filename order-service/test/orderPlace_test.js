@@ -15,14 +15,17 @@ chai.use(chaiHttp);
 describe('/Create Order', () => {
     it('Missing order parameter', (done) => {
         var data = {
-            "restaurantID": "5df3563bc75774dbbf7ad4e1",
-            "restautrantName": "Dominoz",
-            "city": "Pune",
-            "food": {
-                "name": "Pizza",
-                "quantity": "1",
-                "price": "150"
-            }
+            "restaurantID": "5df8a9e9e406e55888f01402",
+            "restautrantName": "Royal Orchid Central",
+            "orderTotalAmount": 350,
+            "city": "Bangalore",
+            "food": [
+                {
+                    "dishName": "Paneer Tikka",
+                    "quantity": 1,
+                    "price": 150
+                }
+            ]
         }
         chai.request(server)
             .post('/api/placeorder')
