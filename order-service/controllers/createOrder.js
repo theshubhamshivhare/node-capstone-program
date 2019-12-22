@@ -3,6 +3,8 @@ const { check, validationResult } = require('express-validator/check');
 const responsePayLoadData = require('../middlewares/buildResponseJson.js');
 const logger = require('../middlewares/logger.js');
 const index = require('../config/index.js');
+const fetch = require('node-fetch');
+fetch.Promise = global.Promise;
 
 
 exports.validate = (method) => {
@@ -33,6 +35,12 @@ exports.placeOrder = async (req, res) => {
         }
         let placedData = new Order(req.body);
         let orderPlacedData = await placedData.save();
+        /* RabbitMQ */
+        fetch('http://localhost:6000/publish', {
+            method: 'POST', body: JSON.stringify(orderPlacedData),
+            headers: { 'Content-Type': 'application/json' }
+        });
+
         response = responsePayLoadData.responseJson(index.globalCode.success.status, index.globalCode.success.code, orderPlacedData);
         loggerResponse = responsePayLoadData.loggerJson(req.originalUrl, req.body, response, "", __filename);
         logger.info(loggerResponse);

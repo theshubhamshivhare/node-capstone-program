@@ -1,0 +1,12 @@
+{
+    "amqp": "amqp://dnqpchum:jwpivdjUVOqKIk7KVHqgpJRsqQglk3NI@crane.rmq.cloudamqp.com/dnqpchum",
+    "queue": "nodemailer-amqp",
+    "server": {
+        "port": 465,
+        "host": "smtp.gmail.com"
+    },
+    "mailAuth": {
+        "user": "shubham7047@gmail.com",
+        "pass": "mindtreemind123!"
+    }
+}
