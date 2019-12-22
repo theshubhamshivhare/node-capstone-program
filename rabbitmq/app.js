@@ -16,7 +16,6 @@ app.post('/publish', (req, res) => {
 })
 
 app.get('/consume', (req, res) => {
-
     subscriber.consume();
 })
 

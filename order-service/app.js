@@ -25,6 +25,18 @@ mongoose.connect(index.config.dev.url, { useNewUrlParser: true, useUnifiedTopolo
   });
 
 
+/* Swagger */
+try {
+  if (process.env.NODE_ENV !== 'production') {
+    const swaggerUi = require('swagger-ui-express');
+    const swaggerDocument = require('./apidoc');
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  }
+} catch (err) {
+  logger.info("Something went wrong with swagger");
+}
+
+
 require('./routes/orderRoutes')(app, router);
 
 
