@@ -24,6 +24,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+
+/* Swagger */
+try {
+  if (process.env.NODE_ENV !== 'production') {
+    const swaggerUi = require('swagger-ui-express');
+    const swaggerDocument = require('./apidoc');
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  }
+} catch (err) {
+  logger.info("Something went wrong with swagger");
+}
+
+
 /* Routes */
 require('./routes/searchRoutes')(app, router);
 require('./routes/restaurantRoutes')(app, router);
