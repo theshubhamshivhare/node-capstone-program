@@ -456,3 +456,5 @@
 {"message":{"status":"Success","code":"200","msg":"Successfully connected to the database"},"level":"info","label":"www","timestamp":"2019-12-22 16:35:13"}
 {"message":{"status":"Success","code":"200","msg":"Successfully connected to the database"},"level":"info","label":"www","timestamp":"2019-12-22 16:35:51"}
 {"message":{"status":"Success","code":"200","msg":"Successfully connected to the database"},"level":"info","label":"www","timestamp":"2019-12-22 16:35:56"}
+{"message":{"status":"Success","code":"200","msg":"Successfully connected to the database"},"level":"info","label":"www","timestamp":"2019-12-22 16:39:12"}
+{"message":{"status":"Success","code":"200","msg":"Successfully connected to the database"},"level":"info","label":"www","timestamp":"2019-12-22 16:39:21"}

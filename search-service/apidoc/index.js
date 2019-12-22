@@ -1,6 +1,6 @@
-const globalSpec = require('./global.spec');
+const searchSpec = require('./search.spec');
 let paths = {};
-Object.assign(paths, globalSpec);
+Object.assign(paths, searchSpec);
 const swagger = {
 	'swagger': '2.0',
 	'info': {
