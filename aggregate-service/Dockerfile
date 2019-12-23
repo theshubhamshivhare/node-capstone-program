@@ -1,7 +1,7 @@
 FROM node:10
 
 # Create app directory
-WORKDIR /src/search-service
+WORKDIR /src/aggregate-service
 
 COPY package.json ./
 
@@ -15,4 +15,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["pm2", "start", "/src/search-service/pm2.config.js"]
+CMD ["pm2", "start", "/src/api-gateway/pm2.config.js"]

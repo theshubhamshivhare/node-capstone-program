@@ -12,7 +12,7 @@ exports.consume = () => {
         host: config.server.host,
         port: config.server.port
     }, {
-            from: 'shubham7047@gmail.com'
+            from: config.mailAuth.fromEmail
         });
 
 
@@ -27,8 +27,8 @@ exports.consume = () => {
                     console.log(JSON.parse(msg.content.toString()));
                     let message = JSON.parse(msg.content.toString());
                     message.auth = {
-                        user: "shubham7047@gmail.com",
-                        pass: "mindtreemind123!"
+                        user: config.mailAuth.user,
+                        pass: config.mailAuth.pass
                     };
 
                     transport.sendMail(message, (err, info) => {
