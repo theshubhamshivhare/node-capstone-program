@@ -1,0 +1,55 @@
+version: '3'
+services:
+  search-service:
+    container_name: search-service
+    restart: always
+    build: ./search-service
+    ports:
+      - '3000:3000'
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  order-service:
+    container_name: order-service
+    restart: always
+    build: ./order-service
+    ports:
+      - '4000:4000'
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  aggregate-service:
+    container_name: aggregate-service
+    restart: always
+    build: ./aggregate-service
+    ports:
+      - '5000:5000'
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    build: ./rabbitmq
+    ports:
+      - '6000:6000'
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  api-gateway:
+    container_name: api-gateway
+    restart: always
+    build: ./api-gateway
+    ports:
+      - '8080:8080'
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    volumes:
+      - /data/mongodb/db:/data/db
+    ports:
+      - '27017:27017'
