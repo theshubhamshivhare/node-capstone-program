@@ -1,34 +1,32 @@
 # Online food ordering System
 
 <h2>Services</h2>
-
-<h4>1. Search Service:</h4>
-
-<p>Create Restaurant: Add restaurant</p>
-
-<p>Search Restaurant: Search restaurants.</p>
-
-<h4>2. Order Service: </h4>
-<p>Place an order: Create an order at the restaurant.</p>
-
-<p>Cancel order: Cancel your order at the restaurant.</p>
-
-<p>Fetch orders: Get your order details.</p>
-
-<p>Calculate the amount: Based on the number of items ordered per order.</p>
-
-<h4>3. Aggregate Service</h4>
-<p>Fetch Order By City</p>
-
-<p>Calculate Orders Amount By City</p>
-
-<h4>4. API Gateway</h4>
-<p>Use the express-gateway npm package.</p>
+<ol>
+<li> Search Service:</li>
+<ul>
+<li><b>Create Restaurant:</b> Add restaurant</li>
+<li><b>Search Restaurant:</b> Search restaurants.</li>
+</ul>
+<li> Order Service: </li>
+<ul>
+<li><b>Place an order:</b> Create an order at the restaurant.</li>
+<li><b>Cancel order:</b> Cancel your order at the restaurant.</li>
+<li><b>Fetch orders:</b> Get your order details.</li>
+<li><b>Calculate the amount:</b> Based on the number of items ordered per order.</li>
+</ul>
+  <li> Aggregate Service</li>
+<ul>
+<li><b>Fetch Order By City</b></li>
+<li><b>Calculate Orders Amount By City</b></li>
+</ul>
+  <li>API Gateway</li>
+<ul>
+<li><b>Use the express</b>: gateway npm package.</li>
   Express Gateway is an open-source API gateway that is commonly used in microservices and API-driven architectures.
   Express Gateway acts as a centralized entry point for all incoming API requests, allowing you to control and manage access to your APIs. It provides functionalities like authentication, authorization, rate limiting, and request/response transformations.
-
-<h4>5. RabbitMQ Service</h4>
-
+</ul>
+<li>RabbitMQ Service</li>
+</ol>
 
 
 Monolithic vs Microservices architecture
